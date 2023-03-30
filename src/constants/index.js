@@ -50,10 +50,10 @@ export const categories= [
 ]
 
 export const subHeaders =[
-    {id:1, title:"All"},
-    {id:1, title:"Today's Deals"},
-    {id:1, title:"Customer Service"},
-    {id:1, title:"Gifts Cards"},
-    {id:1, title:"Registry"},
-    {id:1, title:"Sell"},
+    {id:1, title:"Notifications"},
+    {id:2, title:"Today's Deals"},
+    {id:3, title:"Customer Service"},
+    {id:4, title:"Gifts Cards"},
+    {id:5, title:"Registry"},
+    {id:6, title:"Sell"},
 ]
