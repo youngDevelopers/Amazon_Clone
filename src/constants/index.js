@@ -48,3 +48,12 @@ export const categories= [
         _id:"115",title:"Softwares"
     },
 ]
+
+export const subHeaders =[
+    {id:1, title:"All"},
+    {id:1, title:"Today's Deals"},
+    {id:1, title:"Customer Service"},
+    {id:1, title:"Gifts Cards"},
+    {id:1, title:"Registry"},
+    {id:1, title:"Sell"},
+]
