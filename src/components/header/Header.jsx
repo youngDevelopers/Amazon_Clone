@@ -49,8 +49,11 @@ function Header() {
                         <SearchIcon />
                     </span>
                 </div>
-
-
+            
+                <div className="flex flex-col items-start justify-center  headerHover-" >
+                    <p className="text-xs text-lightText font-light" >Hello, sign in</p>
+                    <p className="text-sm font-semibold  -mt-1 text-whiteText" >Accounts & Lists <span><ArrowDropDownIcon /></span> </p>
+                </div>
                 
             </div>
         </div>
