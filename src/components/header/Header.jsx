@@ -5,6 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import {logo} from "../../assets/assetsExports";
 import {categories} from '../../constants/index';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import HeaderBottom from './HeaderBottom';
 
 function Header() {
 
@@ -13,7 +14,7 @@ function Header() {
     
 
     return (
-        <div>
+        <div className="w-full" >
             <div className="w-full bg-amazon_blue text-white px-4 py-3 flex items-center gap-4">
                 <div className="headerHover">
                     <img className="w-24 mt-2" src={logo} alt="logo"/>
@@ -69,6 +70,7 @@ function Header() {
                 </div>
                 
             </div>
+            <HeaderBottom />
         </div>
     )
 }
