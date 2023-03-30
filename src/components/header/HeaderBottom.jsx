@@ -9,7 +9,7 @@ function HeaderBottom() {
                 {
                     subHeaders && subHeaders.map( (heading) => 
                         (
-                            <li key={heading.id} className="headHover" >{heading.title}</li>
+                            <li key={heading.id} className="headerHover" >{heading.title}</li>
                         )
                     )
                 }
