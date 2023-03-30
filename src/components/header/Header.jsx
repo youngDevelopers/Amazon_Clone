@@ -3,7 +3,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SearchIcon from '@mui/icons-material/Search';
 import {logo} from "../../assets/assetsExports";
-import categories from '../../constants/index';
+import {categories} from '../../constants/index';
 
 function Header() {
 
