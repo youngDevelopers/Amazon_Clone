@@ -11,7 +11,7 @@ function HeaderBottom() {
         <div className="w-full px-4 h-[36px] bg-amazon_light text-white flex items-center">
             
             <ul className="flex items-center gap-2 text-sm  tracking-wide">
-                <li onClick={()=> setSideBar(!sideBar)} className="header-Hover flex items-center gap-1" ><MenuIcon/>All</li>
+                <li onClick={()=> setSideBar(!sideBar)} className="headerHover flex items-center gap-1" ><MenuIcon/>All</li>
                 {
                     subHeaders && subHeaders.map( (heading) => 
                         (
