@@ -4,6 +4,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SearchIcon from '@mui/icons-material/Search';
 import {logo} from "../../assets/assetsExports";
 import {categories} from '../../constants/index';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 function Header() {
 
@@ -58,6 +59,13 @@ function Header() {
                 <div className="flex flex-col items-start justify-center headerHover">
                     <p className="text-xs text-lightText font-light" >Returns</p>
                     <p className="text-sm font-semibold  -mt-1 text-whiteText">& Orders</p>
+                </div>
+
+                <div className="flex items-start justify-center  headerHover relative" >
+                    <ShoppingCartIcon />
+                    <p className="text-xs text-whiteText mt-3 font-semibold" >
+                        Cart <span className="absolute text-xs top-0 left-6 font-semibold p-1 h-4 bg-[#f3a847] text-amazon_blue rounded-full flex justify-center items-center">0</span>
+                    </p>
                 </div>
                 
             </div>
