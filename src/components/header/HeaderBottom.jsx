@@ -3,6 +3,7 @@ import {subHeaders} from '../../constants/index';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 function HeaderBottom() {
 
@@ -28,7 +29,13 @@ function HeaderBottom() {
                             <div className="w-[350px] h-full bg-white border border-black" >
                                 <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4" >
                                     <AccountCircleIcon />
-                                    <h3>Hello, Sign In</h3>
+                                    <h3 className="font-titleFont font-bold text-lg tracking-wide" >Hello, Sign In</h3>
+                                </div>
+                                <div>
+                                    <h3 className="text-lg font-titleFont font-semibold mb-1 px-6" >Digital Content & Devices</h3>
+                                    <ul>
+                                        <li className="flex items-center justify-betweem hover:bg-zinc-200 px-6 py-2 cursor-pointer" >Amazon Music, {" "} <span><KeyboardArrowRightIcon /></span> </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -40,4 +47,4 @@ function HeaderBottom() {
     )
 }
 
-export default HeaderBottom
+export default HeaderBottom;
