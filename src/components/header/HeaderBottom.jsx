@@ -25,7 +25,7 @@ function HeaderBottom() {
             
             {
                 sideBar && (
-                    <div className="w-full h-screen text-black fixed top-0 left-0  bg-amazon_blue bg-opacity-50" >
+                    <div className="w-full h-screen text-black fixed top-0 left-0  bg-amazon_blue bg-opacity-50 overflow-auto" >
                         <div className="w-full h-full relative">
                             <div className="w-[350px] h-full bg-white border border-black" >
                                 <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4" >
