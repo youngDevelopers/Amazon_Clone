@@ -33,6 +33,8 @@ function HeaderBottom() {
                                     <h3 className="font-titleFont font-bold text-lg tracking-wide" >Hello, Sign In</h3>
                                 </div>
                                 <SideBarNavContent />
+                                <SideBarNavContent />
+                                <SideBarNavContent />
                             </div>
                         </div>
                     </div>
