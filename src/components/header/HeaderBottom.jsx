@@ -32,9 +32,10 @@ function HeaderBottom() {
                                     <AccountCircleIcon />
                                     <h3 className="font-titleFont font-bold text-lg tracking-wide" >Hello, Sign In</h3>
                                 </div>
-                                <SideBarNavContent />
-                                <SideBarNavContent />
-                                <SideBarNavContent />
+                                <SideBarNavContent title="Digital Content and devices" one="Amazon Music" two="Kindle E-readers & Books" three="Amazon Appstore" />
+                                <SideBarNavContent title="Shop By Department" one="Electroninc" two="Computers" three="Smart Home" />
+                                <SideBarNavContent title="Programs and Features" one="Gift Cards" two="Amazon live" three="International Shopping" />
+                                <SideBarNavContent title="Help & Settings" one="Your Account" two="Customer Service" three="Contact Us" />
                             </div>
                         </div>
                     </div>
