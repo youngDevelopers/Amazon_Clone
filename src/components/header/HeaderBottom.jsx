@@ -37,7 +37,7 @@ function HeaderBottom() {
                                 <SideBarNavContent title="Programs and Features" one="Gift Cards" two="Amazon live" three="International Shopping" />
                                 <SideBarNavContent title="Help & Settings" one="Your Account" two="Customer Service" three="Contact Us" />
                             </div>
-                            <span onClick={() => setSideBar(!sideBar) } className="cursor-pointer absolute top-0 left-[420px] w-10 h-10 text-black flex items-center justify-center border bg-gray-200 hover:bg-red-500 hover:text-white duration-300" ><CloseIcon/></span>
+                            <span onClick={() => setSideBar(!sideBar) } className="cursor-pointer absolute top-0 left-[380px] w-10 h-10 text-black flex items-center justify-center border bg-gray-200 hover:bg-red-500 hover:text-white duration-300" ><CloseIcon/></span>
                         </div>
                     </div>
                 )
