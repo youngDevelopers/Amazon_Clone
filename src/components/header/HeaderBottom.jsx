@@ -14,7 +14,7 @@ function HeaderBottom() {
     useEffect(() =>{
         document.body.addEventListener("click", (e)=>{
             if(e.target.contains(ref.current)){//whenever it is inside that div that have the references it will not click- hence result is false wen we click inside that div with the current ref
-                setSideBar(false)
+                setSideBar(!sideBar)
             }
         })
     },[])
