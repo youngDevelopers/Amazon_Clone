@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {subHeaders} from '../../constants/index';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -9,6 +9,16 @@ import {motion} from "framer-motion";
 function HeaderBottom() {
 
     const [sideBar, setSideBar] = useState(false)
+    const ref = useRef()
+
+    useEffect(() =>{
+        document.body.addEventListener("click", (e)=>{
+            if(e.target.contains(ref.current)){
+                setSideBar(false)
+            }
+        })
+    })
+
     return (
         <div className="w-full px-4 h-[36px] bg-amazon_light text-white flex items-center">
             
@@ -27,7 +37,7 @@ function HeaderBottom() {
                 sideBar && (
                     <div className="w-full h-screen text-black fixed top-0 left-0  bg-amazon_blue bg-opacity-50 " >
                         <div className="w-full h-full relative">
-                            <motion.div initial={{x:-500,opacity:0}} animate={{x:0,opacity:1}} transition={{duration:.5}} className="w-[350px] h-full bg-white border border-black overflow-auto" >
+                            <motion.div ref={ref} initial={{x:-500,opacity:0}} animate={{x:0,opacity:1}} transition={{duration:.5}} className="w-[350px] h-full bg-white border border-black overflow-auto" >
                                 <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4" >
                                     <AccountCircleIcon />
                                     <h3 className="font-titleFont font-bold text-lg tracking-wide" >Hello, Sign In</h3>
