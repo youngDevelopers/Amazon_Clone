@@ -6,11 +6,12 @@ import {
     bannerImgThree,
     bannerImgFour,
     bannerImgFive,
-} from '../../assets/assetsExports'
+} from '../../assets/assetsExports';
 
 function Banner() {
 
     const [dotactive, isDotActive] = useState(0);
+    
     const settings = {
         dots: true,
         infinite: true,
@@ -81,19 +82,19 @@ function Banner() {
             <div className="w-full h-full relative" >
                 <Slider {...settings}>
                 <div>
-                    <img src="bannerImgOne" alt="bannerImgOne"/>
+                    <img src={bannerImgOne} alt="bannerImgOne"/>
                 </div>
                 <div>
-                    <img src="bannerImgTwo" alt="bannerImgTwo"/>
+                    <img src={bannerImgTwo} alt="bannerImgTwo"/>
                 </div>
                 <div>
-                    <img src="bannerImgThree" alt="bannerImgThree"/>
+                    <img src={bannerImgThree} alt="bannerImgThree"/>
                 </div>
                 <div>
-                    <img src="bannerImgFour" alt="bannerImgFour"/>
+                    <img src={bannerImgFour} alt="bannerImgFour"/>
                 </div>
                 <div>
-                    <img src="bannerImgFive" alt="bannerImgFive"/>
+                    <img src={bannerImgFive} alt="bannerImgFive"/>
                 </div>
                 </Slider>
             </div>
