@@ -8,16 +8,16 @@ import {motion} from "framer-motion";
 
 function HeaderBottom() {
 
-    const [sideBar, setSideBar] = useState(false)
-    const ref = useRef()
+    const [sideBar, setSideBar] = useState(false);
+    const ref = useRef();
 
     useEffect(() =>{
-        document.body.addEventListener("click", (e)=>{
-            if(e.target.contains(ref.current)){//whenever it is inside that div that have the references it will not click- hence result is false wen we click inside that div with the current ref
-                setSideBar(false)
+        document.body.addEventListener("click", (e) => {
+            if( e.target.contains(ref.current) ){//whenever it is inside that div that have the references it will not click- hence result is false wen we click inside that div with the current ref
+                setSideBar(false);
             }
-        })
-    },[])
+        });
+    },[ref,sideBar]);
 
     return (
         <div className="w-full px-4 h-[36px] bg-amazon_light text-white flex items-center">
