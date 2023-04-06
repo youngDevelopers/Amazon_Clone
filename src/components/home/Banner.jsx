@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Slider from "react-slick";
 import {
     bannerImgOne,
@@ -10,8 +10,8 @@ import {
 
 function Banner() {
 
-    const [dotactive, isDotActive] = useState(0);
-    
+    const [dotActive, setDotActive] = useState(0);
+
     const settings = {
         dots: true,
         infinite: true,
