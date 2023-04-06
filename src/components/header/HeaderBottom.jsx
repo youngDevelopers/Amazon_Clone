@@ -13,6 +13,7 @@ function HeaderBottom() {
 
     useEffect(() =>{
         document.body.addEventListener("click", (e)=>{
+            console.log(e.target.contains(ref.current))
             if(e.target.contains(ref.current)){
                 setSideBar(false)
             }
