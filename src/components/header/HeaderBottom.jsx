@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SideBarNavContent from './SideBarNavContent';
-
+import {motion} from "framer-motion";
 
 function HeaderBottom() {
 
@@ -27,7 +27,7 @@ function HeaderBottom() {
                 sideBar && (
                     <div className="w-full h-screen text-black fixed top-0 left-0  bg-amazon_blue bg-opacity-50 " >
                         <div className="w-full h-full relative">
-                            <div className="w-[350px] h-full bg-white border border-black overflow-auto" >
+                            <motion.div initial={{x:-500,opacity:0}} animate={{x:0,opacity:1}} transition={{duration:.5}} className="w-[350px] h-full bg-white border border-black overflow-auto" >
                                 <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4" >
                                     <AccountCircleIcon />
                                     <h3 className="font-titleFont font-bold text-lg tracking-wide" >Hello, Sign In</h3>
@@ -36,8 +36,8 @@ function HeaderBottom() {
                                 <SideBarNavContent title="Shop By Department" one="Electroninc" two="Computers" three="Smart Home" />
                                 <SideBarNavContent title="Programs and Features" one="Gift Cards" two="Amazon live" three="International Shopping" />
                                 <SideBarNavContent title="Help & Settings" one="Your Account" two="Customer Service" three="Contact Us" />
-                            </div>
-                            <span onClick={() => setSideBar(!sideBar) } className="cursor-pointer absolute top-0 left-[345px] w-10 h-10 text-black flex items-center justify-center border bg-gray-200 hover:bg-red-500 hover:text-white duration-300" ><CloseIcon/></span>
+                                <span onClick={() => setSideBar(!sideBar) } className="cursor-pointer absolute top-0 left-[345px] w-10 h-10 text-black flex items-center justify-center border bg-gray-200 hover:bg-red-500 hover:text-white duration-300" ><CloseIcon/></span>
+                            </motion.div>
                         </div>
                     </div>
                 )
