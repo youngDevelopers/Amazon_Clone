@@ -7,7 +7,7 @@ function Products() {
     const productData = data.data;
     return (
         <div>
-            Products
+            Products list 
         </div>
     )
 }
