@@ -9,9 +9,9 @@ function FooterMiddle() {
                 <div className="max-w-5xl mx-auto text-gray-500" >
                     <div className="w-full grid grid-cols-4" >
                         {
-                            middleList.map( (item) =>{
+                            middleList.map( (item) => (
                                 <FooterMiddleList key={item._id} title={item.title} listItem={item.listItem}/>
-                            })
+                            ))
                         }
                     </div>
                 </div>

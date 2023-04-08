@@ -35,7 +35,7 @@ export const subHeaders =[
     {id:5, title:"Registry"},
     {id:6, title:"Sell"},
 ]
-
+ 
 export const middleList = [
     {
       _id: 2221,
