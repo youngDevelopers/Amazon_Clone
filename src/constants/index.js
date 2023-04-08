@@ -29,7 +29,7 @@ export const categories= [
 
 export const subHeaders =[
     {id:1, title:"Notifications"},
-    {id:2, title:"Today's Deals"},
+    {id:2, title:"Today's Deals"}, 
     {id:3, title:"Customer Service"},
     {id:4, title:"Gifts Cards"},
     {id:5, title:"Registry"},

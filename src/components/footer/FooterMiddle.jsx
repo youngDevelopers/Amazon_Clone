@@ -1,6 +1,6 @@
 import React from 'react';
 import FooterMiddleList from './FooterMiddleList';
-import middleList from '../../constants/index';
+import {middleList} from '../../constants/index';
 
 function FooterMiddle() {
     return (
