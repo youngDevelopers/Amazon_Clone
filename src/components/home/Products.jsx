@@ -1,6 +1,10 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';
+import ApiIcon from '@mui/icons-material/Api';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
 function Products() {//we can add a condition if no responsse is returned
@@ -13,12 +17,18 @@ function Products() {//we can add a condition if no responsse is returned
             {
                 productData.map( (item) => {
                     return (
-                        <div key={item.id} className="bg-white h-auto border-[1px] border-gray-200 py-6 z-30 hover:border-transparent shadow-none hover:shadow-testShadow duration-200 relative flex flex-col gap-4 ">
-                            <div className="w-full h-auto flex items-center justify-center">
+                        <div key={item.id} className="bg-white h-auto border-[1px] border-gray-200 py-8  z-30 hover:border-transparent shadow-none hover:shadow-testShadow duration-200 relative flex flex-col gap-4 ">
+                            <span className="text-xs capitalize italic absolute top-2 right-2 text-gray-500 " >{item.category}</span>
+                            <div className="w-full h-auto flex items-center justify-center relative group">
                                 <img className="w-52 h-64 object-contain " src={item.thumbnail} alt="product-image"/>
-                                <span className="text-xs capitalize italic absolute top-2 right text-gray-500" >{item.category}</span>
+                                <ul className="w-full h-30 bg-gray-100 absolute -bottom-[160px] felx flex-col items-end justify-center gap-2 font-titleFont px-2 border-1 border-r group-hover:bottom-0 duration-700 ">
+                                     <li className="productli" >Compare <span> <ApiIcon /> </span> </li>
+                                     <li className="productli" >Add to Cart <span> <AddShoppingCartIcon /> </span> </li>
+                                     <li className="productli" >View Details{" "} <span> <ArrowCircleRightIcon /> </span> </li>
+                                     <li className="productli" >Add to Wish List{" "} <span> <FavoriteIcon/> </span> </li>
+                                </ul>
                             </div>
-                            <div className="px-4">
+                            <div className="px-4 z-10 bg-white">
                                 <div className="flex items-center justify-between">
                                     <h2 className="font-titleFont tracking-wide text-lg text-amazon_blue font-medium">{item.title.substring(0, 20)}</h2>
                                     <p className="text-sm text-gray-600 font-emibold" > ${item.price}</p>
