@@ -6,19 +6,23 @@ import {logo} from "../../assets/assetsExports";
 import {categories} from '../../constants/index';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import HeaderBottom from './HeaderBottom';
+import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 function Header() {
 
     const [showAll, setShowAll] = useState(false);
-    
-    
+    const products = useSelector((state) => state.amazonReducer.products);//useSelector hook to access store states reducers
+    console.log(products);
 
     return (
         <div className="w-full sticky top-0 z-50"  >
             <div className="w-full bg-amazon_blue text-white px-4 py-3 flex items-center gap-4">
-                <div className="headerHover">
-                    <img className="w-24 mt-2" src={logo} alt="logo"/>
-                </div>
+                <Link to='/' >
+                    <div className="headerHover">
+                        <img className="w-24 mt-2" src={logo} alt="logo"/>
+                    </div>
+                </Link>
 
                 <div className="headerHover hidden mdl:inline-flex" >
                     <LocationOnIcon />
@@ -52,22 +56,30 @@ function Header() {
                     </span>
                 </div>
             
-                <div className="flex flex-col items-start justify-center  headerHover" >
-                    <p className="text-sm mdl:text-xs text-white mdl:text-lightText font-light" >Hello, sign in</p>
-                    <p className="text-sm font-semibold  -mt-1 text-whiteText hidden mdl:inline-flex" >Accounts & Lists <span><ArrowDropDownIcon /></span> </p>
-                </div>
+                <Link to="/login">
+                    <div className="flex flex-col items-start justify-center  headerHover" >
+                        <p className="text-sm mdl:text-xs text-white mdl:text-lightText font-light" >Hello, sign in</p>
+                        <p className="text-sm font-semibold  -mt-1 text-whiteText hidden mdl:inline-flex" >Accounts & Lists <span><ArrowDropDownIcon /></span> </p>
+                    </div>
+                </Link>
 
                 <div className=" hidden lgl:flex flex-col items-start justify-center headerHover">
                     <p className="text-xs text-lightText font-light" >Returns</p>
                     <p className="text-sm font-semibold  -mt-1 text-whiteText">& Orders</p>
                 </div>
 
-                <div className="flex items-start justify-center  headerHover relative" >
-                    <ShoppingCartIcon />
-                    <p className="text-xs text-whiteText mt-3 font-semibold" >
-                        Cart <span className="absolute text-xs -top-1 left-6 font-semibold p-1 h-4 bg-[#f3a847] text-amazon_blue rounded-full flex justify-center items-center">0</span>
-                    </p>
-                </div>
+                <Link to='/cart' >
+                    <div className="flex items-start justify-center  headerHover relative" >
+                        <ShoppingCartIcon />
+                        <p className="text-xs text-whiteText mt-3 font-semibold" >
+                            Cart <span className="absolute text-xs -top-1 left-6 font-semibold p-1 h-4 bg-[#f3a847] text-amazon_blue rounded-full flex justify-center items-center">
+                                {
+                                    products.length > 0 ? products.length : 0
+                                }
+                            </span>
+                        </p>
+                    </div>
+                </Link>
                 
             </div>
             <HeaderBottom />

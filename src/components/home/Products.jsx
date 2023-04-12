@@ -5,13 +5,13 @@ import ApiIcon from '@mui/icons-material/Api';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-
+import {useDispatch} from 'react-redux'
+import { addToCart } from '../../redux/amazonSlice';
 
 function Products() {//we can add a condition if no responsse is returned
+    const dispatch = useDispatch();
     const data = useLoaderData();
-    //console.log(data);
     const productData = data.data.products;
-    console.log(productData)
     return (
         <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-10 px-4">
             {
@@ -34,7 +34,7 @@ function Products() {//we can add a condition if no responsse is returned
                                     <p className="text-sm text-gray-600 font-emibold" > ${item.price}</p>
                                 </div>
                                 <div>
-                                    <p className="text-sm">{item.description.substring(0, 100)}.....</p>
+                                    <p className="text-sm">{item.description.substring(0, 60)}.....</p>
                                     <div className="text-yellow-500">
                                         <StarIcon />
                                         <StarIcon />
@@ -43,7 +43,17 @@ function Products() {//we can add a condition if no responsse is returned
                                         <StarIcon />
                                     </div>
                                 </div>
-                                <button className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
+                                <button onClick={ ()=> dispatch( addToCart( {
+                                    id:item.id,
+                                    title:item.title,
+                                    description:item.description,
+                                    price:item.price,
+                                    category:item.category,
+                                    image:item.thumbnail,
+                                    quantity:1
+                                    })) 
+                                }
+                                className="w-full font-titleFont font-medium text-base bg-gradient-to-tr from-yellow-400 to-yellow-200 border hover:from-yellow-300 hover:to-yellow-400 border-yellow-500 hover:border-yellow-700 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3">
                                     Add to Cart
                                 </button>
                             </div>
