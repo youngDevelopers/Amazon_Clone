@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 function Header() {
 
     const [showAll, setShowAll] = useState(false);
-    const products = useSelector((state) => state.amazonReducer.products);//useSelector hook to access store states reducers
+    const products = useSelector((state) => state.amazon.products);//useSelector hook to access store states reducers
     console.log(products);
 
     return (

@@ -5,7 +5,7 @@ import ApiIcon from '@mui/icons-material/Api';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import {useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux';
 import { addToCart } from '../../redux/amazonSlice';
 
 function Products() {//we can add a condition if no responsse is returned
