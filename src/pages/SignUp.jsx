@@ -3,10 +3,11 @@ import {darkLogo} from '../assets/assetsExports';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import { Link } from 'react-router-dom';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 function SignUp() {
 
-    
+    const auth = getAuth();
 
     const [clientName, setClientName] = useState("");
     const [email, setEmail] = useState("");
@@ -80,6 +81,22 @@ function SignUp() {
         //sendin-d input data to database
         if(clientName && email && password && emailValidation(email) && password.length >= 6 && confirmPassword && confirmPassword === password){
             console.log(clientName, email, password);
+
+            //sending data to firebase
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    console.log(user);
+                    // ...
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(error);
+                    // ..-
+                });
+
             setClientName("");
             setEmail("");
             setPassword("");
