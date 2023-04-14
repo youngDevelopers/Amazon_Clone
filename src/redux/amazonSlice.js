@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 //slice is more like a feature to the site -
 const initialState = {
     products: [],
-    userInfo: [],
+    userInfo: null,
 }
 
 export const amazonSlice = createSlice({
