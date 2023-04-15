@@ -2,10 +2,15 @@ import React, {useState} from 'react';
 import {darkLogo} from '../assets/assetsExports';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
-import { Link } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {RotatingLines} from "react-loader-spinner";
+import {motion} from "framer-motion";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 function SignUp() {
+
+    const navigate = useNavigate();
 
     const auth = getAuth();
 
@@ -19,6 +24,11 @@ function SignUp() {
     const [errEmail, setErrEmail] = useState("");
     const [errPassword, setErrPassword] = useState("");
     const [errConfirmPassword, setErrConfirmPassword] = useState("");
+    const [firebaseErr, setFirebaseErr] = useState("");
+
+    //for loading and success 
+    const [loading, setLoading] = useState(false);
+    const [successMessage, setSuccessMessage] = useState("");
 
     //Start of handleName change functions
     const handleName = (e) => {
@@ -28,7 +38,8 @@ function SignUp() {
 
     const handleEmail = (e) => {
         setEmail(e.target.value);
-        setErrEmail("")
+        setErrEmail("");
+        setFirebaseErr("");
     };
 
     const handlePassword = (e) => {
@@ -80,29 +91,49 @@ function SignUp() {
         //console.log(emailValidation(email))
         //sendin-d input data to database
         if(clientName && email && password && emailValidation(email) && password.length >= 6 && confirmPassword && confirmPassword === password){
-            console.log(clientName, email, password);
 
-            //sending data to firebase
+            //set loading true when we send data to the firebase
+            setLoading(true);
+
+            //sending data to firebase to create user for sign up
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    // Signed in 
+                    updateProfile(auth.currentUser, {
+                        displayName: clientName,
+                        photoURL: "https://avatars.githubusercontent.com/u/91829067?s=400&u=2a9dcc486cc3c0c9b17ad4e10968ed1cc51eb309&v=4"
+                    })
+
+                    // Signed in  that is creating the user 
                     const user = userCredential.user;
-                    console.log(user);
-                    // ...
+                    //console.log(user);
+
+                    //the user is now created hence set loading false
+                    setLoading(false);
+                    
+                    // Set account successfully created
+                    setSuccessMessage("Account successfully created");
+
+                    //Once the successfull message is delayed we need to set timer which will allow render or navigate to sign in route
+                    setTimeout( () =>{
+                        navigate("/login");
+                    }, 3000);
                 })
                 .catch((error) => {
                     const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log(error);
+                    setLoading(false);//we need to set loading false if there is an error in allowing signing up
+                    if(errorCode.includes("auth/email-already-in-use")){
+                        setFirebaseErr("Email Already in use. Try another one");
+                    }
                     // ..-
                 });
-
+            
+            //after signing up clear data in the form fields
             setClientName("");
             setEmail("");
             setPassword("");
             setConfirmPassword("");
         }
-    };
+    }
 
     
     return (
@@ -134,6 +165,13 @@ function SignUp() {
                                         </p>
                                     )
                                 }
+                                {
+                                    firebaseErr && (
+                                        <p className="text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 -mt-1.5">
+                                            <span className="text-red-600 italic font-titleFont font-extrabold text-base"><PriorityHighIcon/></span>{firebaseErr}
+                                        </p>
+                                    )
+                                }
                             </div>
                             <div className="flex flex-col gap-2">
                                 <p className="text-sm font-medium">Password</p>
@@ -161,6 +199,26 @@ function SignUp() {
                             <button onClick={handleRegistration} className="w-full py-1.5 text-sm font-normal rounded-sm bg-gradient-to-t from-[#f7dfa5] to-[#f0c14b] hover:bg-gradient-to-b border border-zinc-400 active:border-yellow-800 active-:shadow-amazonInput">
                                 Continoue
                             </button>
+                            {
+                                loading && ( //if loading then show loader
+                                    <div className="flex justify-center">
+                                        <RotatingLines
+                                            strokeColor="#febd69"
+                                            strokeWidth="5"
+                                            animationDuration="0.75"
+                                            width="50"
+                                            visible={true}
+                                            />
+                                    </div>
+                                )
+                            }
+                            {
+                                successMessage && (
+                                    <div className="text-sm  text-skate-300">
+                                        <motion.p initial={{y:10,opacity:0}} animate={{y:0,opacity:1}} transition={{delay:0.2,duration:0.5}}>{successMessage} <span className="p-2"><CheckCircleIcon className="text-green-400" /></span></motion.p>
+                                    </div>
+                                )
+                            }
                         </div>
                         <p className="text-sm text-black leading-4 mt-4 mb-8">
                             By Continuing, you agree to Amazon's <span className="text-blue-600">Conditions of use {" "}</span> and <span className="text-blue-600">Private Notice.</span>

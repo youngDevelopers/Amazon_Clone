@@ -5,9 +5,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SideBarNavContent from './SideBarNavContent';
 import {motion} from "framer-motion";
+import { useSelector } from "react-redux";
 
 function HeaderBottom() {
 
+    const userInfo = useSelector( (state) => state.amazon.userInfo); 
     const [sideBar, setSideBar] = useState(false);
     const ref = useRef();
 
@@ -39,8 +41,20 @@ function HeaderBottom() {
                         <div className="w-full h-full relative">
                             <motion.div ref={ref} initial={{x:-500,opacity:0}} animate={{x:0,opacity:1}} transition={{duration:.5}} className="w-[80%] md:w-[350px] h-full bg-white border border-black overflow-auto" >
                                 <div className="w-full bg-amazon_light text-white py-2 px-6 flex items-center gap-4" >
-                                    <AccountCircleIcon />
-                                    <h3 className="font-titleFont font-bold text-lg tracking-wide" >Hello, Sign In</h3>
+                                    {
+                                        userInfo ? (
+                                            <img className="w-10 h-10 rounded-full" src={userInfo.image} alt="UserProf-Pic"/>
+                                        ) : (
+                                            <AccountCircleIcon />
+                                        )
+                                    }
+                                    {
+                                        userInfo ? (
+                                            <h3 className="font-titleFont font-bold text-lg tracking-wide" >{userInfo.userName}</h3>
+                                        ) : (
+                                            <h3 className="font-titleFont font-bold text-lg tracking-wide" >Hello, Sign In</h3>
+                                        )
+                                    }
                                 </div>
                                 <SideBarNavContent title="Digital Content and devices" one="Amazon Music" two="Kindle E-readers & Books" three="Amazon Appstore" />
                                 <SideBarNavContent title="Shop By Department" one="Electroninc" two="Computers" three="Smart Home" />
